@@ -1,0 +1,45 @@
+<section class="py-3 pt-5">
+  <div class="row">
+    <div class="col align-self-center">
+      <div class="row">
+        <div class="col">
+          <h1 class="mat-display-1 m-0">{{title}}</h1>
+        </div>
+      </div>
+      <div class="row" *ngIf="subtitle">
+        <div class="col">
+          <h4 class="mat-subheading-2">{{subtitle}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col align-self-center">
+      <div class="row justify-content-end">
+        <div class="col-auto align-self-center button-refresh" *ngIf="refreshBtn">
+          <button mat-icon-button (click)="clickRefreshBtn.emit()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+        <div class="col-auto align-self-center" *ngIf="secondaryButton">
+          <button mat-stroked-button (click)="clickSecondaryBtn.emit()">
+            {{ secondaryButton }}
+          </button>
+        </div>
+        <div class="col-auto align-self-center" *ngIf="labelBtn">
+          <button mat-stroked-button (click)="clickBtn.emit()">
+            {{ labelBtn }}
+          </button>
+        </div>
+        <div class="col align-self-center ml-5" *ngIf="searchInput">
+          <mat-form-field class="w-100">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput [formControl]="searchControl">
+            <button *ngIf="valueSearch" matSuffix mat-icon-button aria-label="Limpar" (click)="clearSearch()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-icon matSuffix *ngIf="!valueSearch">search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

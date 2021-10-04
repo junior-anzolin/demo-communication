@@ -1,0 +1,9 @@
+<div class="container">
+  <default-header title="Membros" subtitle="Membros cadastrados no sistema" labelBtn="Cadastrar"
+    primaryBtnPermission="member::create" (clickBtn)="new()" [refreshBtn]="true" (clickRefreshBtn)="requestData()"
+    [searchInput]="true" (changeSearchInputValue)="requestData({ search: $event })">
+  </default-header>
+
+  <tabela [columns]="columns" [data]="dataList" [pagination]="true" (actionChangePage)="requestData($event)"
+    [pageLength]="lengthData" (eventClickRow)="open($event)"></tabela>
+</div>

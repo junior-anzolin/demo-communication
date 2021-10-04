@@ -1,0 +1,36 @@
+<mat-table [dataSource]="data" class="mat-elevation-z8">
+
+  <ng-container *ngFor="let column of columns" [matColumnDef]="column.value">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> {{ column.label }} </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element" (click)="clickRow(element)">
+      <ng-container *ngIf="column.typeFormat == 'date'">
+        {{ value(element, column) | date : column.optionFormat }}
+      </ng-container>
+      <ng-container *ngIf="!column.typeFormat">
+        {{ value(element, column) }}
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container *ngFor="let column of columnsAction" [matColumnDef]="column.action">
+    <mat-header-cell mat-header-cell *matHeaderCellDef class="title-col">
+      {{ column.labelColumn ? column.labelColumn : column.label }}
+    </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element; let i = index" class="buttons-action">
+      <button mat-icon-button [color]="column.classStyle" (click)="action(column.action, column.value, element, i)">
+        <ng-container *ngIf="isMatIcon(column.label); else IsText">
+          <mat-icon>{{ matIcon(column.label) }}</mat-icon>
+        </ng-container>
+        <ng-template #IsText>
+          <section [innerHTML]="column.label"></section>
+        </ng-template>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" class="click"></mat-row>
+</mat-table>
+<mat-paginator class="mat-elevation-z8" *ngIf="pagination" [length]="pageLength" [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+</mat-paginator>

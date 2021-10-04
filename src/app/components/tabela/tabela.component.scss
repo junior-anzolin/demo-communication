@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+.buttons-action {
+  width: 100px;
+  text-align: center;
+}
+
+.title-col {
+  text-align: center;
+}
+
+.click {
+  cursor: pointer;
+}
+
+mat-row {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}

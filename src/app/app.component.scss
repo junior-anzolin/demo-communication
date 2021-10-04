@@ -1,0 +1,23 @@
+.drawer-container {
+  width: 100vw;
+  height: 100vh;
+
+  .drawer {
+    min-width: 200px;
+    display: flex;
+
+    .title-page {
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .item-menu {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #b4b4b4;
+      }
+    }
+  }
+}
